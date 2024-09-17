@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { useSignup } from "../hooks/useSignup";
+import { useLogin } from "../hooks/useLogin";
 
-const Signup = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { signup, isLoading, error } = useSignup();
+  const {login, isLoading, error} = useLogin();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(email, password);
+    await login(email, password);
   };
 
   return (
-    <form className="signup" onSubmit={handleSubmit}>
-      <h3>Sign up</h3>
+    <form className="login" onSubmit={handleSubmit}>
+      <h3>Login</h3>
       <label>
         Email:
         <input
@@ -30,10 +30,10 @@ const Signup = () => {
           value={password}
         />
       </label>
-      <button disabled={isLoading}>Sign up</button>
+      <button disabled={isLoading}>Login</button>
       {error && <div className="error">{error}</div>}
     </form>
   );
 };
 
-export default Signup;
+export default Login;
